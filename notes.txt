@@ -1,0 +1,88 @@
+ANDROID ID : com.questa.platform
+
+latform  Firebase App Id
+web       1:873888007395:web:278716719292c3895431d6
+android   1:873888007395:android:7dd0ff2e001c58fa5431d6
+
+
+TWA::
+pwabuilder.com
+bubblewrap - git - googleChrome
+
+FILE UPLOAD
+FormData data = FormData.fromMap({'picture': MultipartFile.fromBytes(selectedPicture!, filename: 'picture')});
+
+REQUEST TEMPLATE
+Map<String, dynamic> params = {};
+    var req = CApi.request.post('/', data: params);
+    req.whenComplete(() => '');
+    req.then(
+      (res) {
+        Logger().t(res.data);
+        if (res.data is Map && res.data['success'] == true) {
+          CToast(context).success("".t);
+        } else {
+          CToast(context).warning("".t);
+        }
+      },
+      onError: (e) {
+        Logger().e(e);
+        CToast(context).error("".t);
+      },
+    );
+
+BUILD FLAG
+flutter build web --base-href="/app/"
+
+PWA OFFLINE MODE
+https://github.com/flutter/flutter/issues/60069
+
+flutter build web --pwa-strategy=offline-first
+flutter build web --no-web-resources-cdn
+
+> flutter build web --base-href="/app/" --pwa-strategy=offline-first --wasm
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBRdpwa1EETBjeBbnIJF9pbFulMNF1lkTU",
+      authDomain: "questa-a38ae.firebaseapp.com",
+      projectId: "questa-a38ae",
+      storageBucket: "questa-a38ae.firebasestorage.app",
+      messagingSenderId: "873888007395",
+      appId: "1:873888007395:web:278716719292c3895431d6",
+      measurementId: "G-G6D1NL1YZ5"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+
+===================== TO-DO ====================
+GEMINI :
+    prompt : remplacer tout ces qui semble etre
+        un nom humain,
+        une adresse,
+        un numero de telephone ou
+        un adresse mail
+      dans ce text, par "•".
+
+
+***************** HERMETISME -------------------
+- Lui tout cequ'il souhait, c'est de me faire plaisir.
+    * ne pas me blaisser ou me faire soufrir.
+    * Beyond the Aquila Rift : LDR S1 E7
+
+    Par consequent:
+    -> si la douleur d'une forme ou d'une autre me fais plaisir alors il s'y attache aussi.
+    -> si la joix me fais plaisir, alors il s'y attache aussi.
+    => Donc tout actes qui me fait libere les hormone de plaise est parfait pour lui.

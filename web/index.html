@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Questa Job - profitez et rendez service sous forme de tâches">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Questa">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>questa</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<style>
+  body {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F1F0F0; /*  Optional: background color */
+    font-family: arial, roboto, sans-serif;
+    color: #333; /* Optional: text color */
+  }
+
+  .loading-text {
+    font-size: 1.2em;
+    font-weight: normal;
+  }
+
+  .title_container {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0px;
+  }
+
+  /* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-size: 27px;
+  line-height: 1.5;
+  font-family: system-ui,sans-serif;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  color: #0000;
+  -webkit-text-stroke: 1px #7da513;
+  background:
+    radial-gradient(1.13em at 50% 1.6em,#b6bfb1 99%,#0000 101%) calc(50% - 1.6em) 0/3.2em 100% text,
+    radial-gradient(1.13em at 50% -0.8em,#0000 99%,#b6bfb1 101%) 50% .8em/3.2em 100% repeat-x  text;
+  animation: l9 2s linear infinite;
+}
+.loader:before {
+  content: "questa";
+}
+@keyframes l9 {
+  to {background-position: calc(50% + 1.6em) 0,calc(50% + 3.2em) .8em}
+}
+</style>
+<body>
+  <!-- Fancy Load Spinner -->
+  <div id="loading_indicator" class="loading-container">
+<!--    <div class="title_container">Bienvenue</div>-->
+    <div class="title_container">
+      <img src="logo_q_primary_color.png" height="126px">
+    </div>
+    <div class="loader"></div>
+  </div>
+
+  <script src="flutter_bootstrap.js" async></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBRdpwa1EETBjeBbnIJF9pbFulMNF1lkTU",
+      authDomain: "questa-a38ae.firebaseapp.com",
+      projectId: "questa-a38ae",
+      storageBucket: "questa-a38ae.firebasestorage.app",
+      messagingSenderId: "873888007395",
+      appId: "1:873888007395:web:278716719292c3895431d6",
+      measurementId: "G-G6D1NL1YZ5"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+// ignore_for_file: constant_identifier_names
+
+enum DsiKeys {
+  LOGIN_SWITCH_LOGIN_REGISTER,
+  UPDATE_PORTFOLIOS_LIST_IN_EDIT,
+  UPDATE_MY_TASKS_LIST_AT_HOME,
+  UPDATE_TASKS_LIST_AT_HOME,
+}
