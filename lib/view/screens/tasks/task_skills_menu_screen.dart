@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:logger/logger.dart';
 import 'package:questa/configs/c_consts.dart';
+import 'package:questa/configs/inline_notifier_keys.dart';
 import 'package:questa/dsi/data_sync_interface.dart';
 import 'package:questa/modules/c_api.dart';
 import 'package:questa/modules/extensions_utils_packs.dart';
@@ -12,7 +13,6 @@ import 'package:questa/view/theme/configs/tc_buttons.dart';
 import 'package:questa/view/widgets/back_button_widget.dart';
 import 'package:questa/view/widgets/c_toast.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import 'package:run_it/run_it.dart';
 import 'package:ui_value/ui_value.dart';
 
 @RoutePage()
@@ -20,7 +20,7 @@ class TaskSkillsMenuScreen extends StatefulWidget {
   const TaskSkillsMenuScreen({super.key, @QueryParam() this.title});
   final String? title;
   // final Function(dynamic value)? onSelected;
-  static const String onSelectCallbackKey = "61uj961h9";
+  static String onSelectCallbackKey = DsiKeys.SKILLS_SELECTOR_PROXY.name;
 
   @override
   State<TaskSkillsMenuScreen> createState() => _TaskSkillsMenuScreenState();
@@ -189,7 +189,7 @@ class _TaskSkillsMenuScreenState extends State<TaskSkillsMenuScreen> with UiValu
   }
 
   void _openSkillDetailBottomSheet(Map element) {
-    List<String> topics = ((element['topics'] ?? '') as String).run<List<String>>((it) => it.split(","));
+    // List<String> topics = ((element['topics'] ?? '') as String).run<List<String>>((it) => it.split(","));
 
     showModalBottomSheet(
       isScrollControlled: true,
@@ -222,11 +222,6 @@ class _TaskSkillsMenuScreenState extends State<TaskSkillsMenuScreen> with UiValu
                 9.gap,
                 Text("Sujets").muted,
                 9.gap,
-                Wrap(
-                  spacing: 4.5,
-                  runSpacing: 4.5,
-                  children: topics.map((e) => Chip(label: e.t, visualDensity: VisualDensity.compact)).toList(),
-                ),
               ],
             ).withPadding(horizontal: 12),
 

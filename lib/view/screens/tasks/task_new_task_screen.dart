@@ -48,8 +48,8 @@ class _TaskNewTaskScreenState extends State<TaskNewTaskScreen> with UiValueMixin
 
   Uint8List? _audioRecorded;
   String _currency = 'USD';
-  final DateTime _taskTimeout = DateTime.now();
-  DateTimeRange<DateTime>? _flexibleTaskDate;
+  // final DateTime _taskTimeout = DateTime.now();
+  DateTime? _flexibleTaskDate;
   // final TextEditingController _taskTimeoutController = TextEditingController();
   final TextEditingController _description = TextEditingController();
   final TextEditingController _minPrice = TextEditingController();
@@ -156,32 +156,36 @@ class _TaskNewTaskScreenState extends State<TaskNewTaskScreen> with UiValueMixin
               onChanged: (value, values) async {
                 await Future.delayed(270.ms);
                 if (value == 'FLEXIBLE') {
-                  showDateRangePicker(
+                  showDatePicker(
                     context: context,
                     currentDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime.now().add(360.days),
-                  ).then((value) {
-                    _flexibleTaskDate = value;
-                    uiUpdate();
+                  ).then((dt) {
+                    if (dt != null) {
+                      showTimePicker(context: context, initialTime: TimeOfDay.now()).then((tm) {
+                        if (tm != null) _flexibleTaskDate = DateTime(dt.year, dt.month, dt.day, tm.hour, tm.minute);
+                        uiUpdate();
+                      });
+                    } else {
+                      uiUpdate(() => _flexibleTaskDate = null);
+                    }
                   });
                 } else {
-                  uiUpdate(() {
-                    _flexibleTaskDate = null;
-                  });
+                  uiUpdate(() => _flexibleTaskDate = null);
                 }
               },
             ),
             6.gap,
-            if (_flexibleTaskDate != null)
+            if (_emergencyLevel.singleValue == 'FLEXIBLE')
               Card.filled(
                 margin: EdgeInsets.zero,
                 child: Text(
-                  "Disponible du "
-                  "${_flexibleTaskDate?.start.toReadable.numeric()} au "
-                  "${_flexibleTaskDate?.end.toReadable.numeric()}",
+                  "Disponible jusq'au "
+                  "${_flexibleTaskDate?.toReadable.numeric() ?? '- Pas date defini -'} "
+                  "${_flexibleTaskDate?.toReadable.numeric(format: "à {hour}h{minute}") ?? '- et pas d\'heure -'} ",
                   textAlign: TextAlign.center,
-                ).withPadding(all: 6.6),
+                ).elipsis.withPadding(all: 6.6),
               ).animate().fadeIn(),
 
             9.gap,
@@ -250,7 +254,7 @@ class _TaskNewTaskScreenState extends State<TaskNewTaskScreen> with UiValueMixin
             Row(
               children: [
                 TextField(
-                  controller: _maxPrice,
+                  controller: _minPrice,
                   decoration: InputDecoration(hint: "Prix min".t, prefix: _currency.t),
                   inputFormatters: [CMiscClass.doubleInputFormater()],
                   keyboardType: TextInputType.number,
@@ -259,7 +263,7 @@ class _TaskNewTaskScreenState extends State<TaskNewTaskScreen> with UiValueMixin
                 ).expanded(),
                 9.gap,
                 TextField(
-                  controller: _minPrice,
+                  controller: _maxPrice,
                   decoration: InputDecoration(hint: "Prix max".t, prefix: _currency.t),
                   inputFormatters: [CMiscClass.doubleInputFormater()],
                   keyboardType: TextInputType.number,
@@ -442,11 +446,12 @@ class _TaskNewTaskScreenState extends State<TaskNewTaskScreen> with UiValueMixin
 
   void startSaving() {
     var tmpDateTime = DateTime.now();
-    if (_taskTimeout.run((it) {
-              if (it.day == tmpDateTime.day && it.month == tmpDateTime.month) return true;
+    if (_flexibleTaskDate.run((it) {
+              if (it?.day == tmpDateTime.day && it?.month == tmpDateTime.month) return true;
               return false;
             }) &&
             _description.text.isEmpty ||
+        _visibilityScop.values.isEmpty ||
         _minPrice.text.isEmpty ||
         _maxPrice.text.isEmpty) {
       CToast(context).warning("Veuillez remplir les champs : Description, nivau d'urgence et le prix.".t);
@@ -582,8 +587,7 @@ class __InnerPosterState extends State<_InnerPoster> with UiValueMixin {
       'currency': parent._currency,
       'maxPrice': parent._maxPrice.text,
       'minPrice': parent._minPrice.text,
-      'startFlexibleDate': parent._flexibleTaskDate?.start.toIso8601String(),
-      'endFlexibleDate': parent._flexibleTaskDate?.end.toIso8601String(),
+      'flexibleDate': parent._flexibleTaskDate?.toIso8601String(),
     };
     var req = CApi.request.post('/task/i1BHgnVSi', data: params);
     req.whenComplete(() => isStarting.value = false);
