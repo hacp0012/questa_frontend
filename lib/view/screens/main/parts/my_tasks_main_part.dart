@@ -16,13 +16,14 @@ class _MyTasksMainPartState extends State<MyTasksMainPart> with AutomaticKeepAli
 
   List minesList = [];
   List dealedsList = [];
-  Map detailss = {};
+  Map detailsData = {};
 
   // VIEW ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
   @override
   void initState() {
     super.initState();
 
+    loadDetails();
     loadMyTasks();
     Dsi.registerCallback(DsiKeys.UPDATE_MY_TASKS_LIST_AT_HOME.name, (p0) => loadMyTasks());
   }
@@ -79,6 +80,8 @@ class _MyTasksMainPartState extends State<MyTasksMainPart> with AutomaticKeepAli
                 // IconButtonWidget(icon: Icon(IconsaxPlusLinear.search_normal), onPressed: () {}),
               ],
             ).withPadding(all: 12),
+
+            // OPTIONS BUTTONS.
             18.gap,
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -88,8 +91,11 @@ class _MyTasksMainPartState extends State<MyTasksMainPart> with AutomaticKeepAli
                   children: [
                     Badge(
                       backgroundColor: context.theme.colorScheme.primary,
-                      label: "3".t,
-                      child: IconButtonWidget(icon: Icon(IconsaxPlusLinear.folder)),
+                      label: CMiscClass.numberAbrev(detailsData['tasks_count'] ?? 0).t,
+                      child: IconButtonWidget(
+                        icon: Icon(IconsaxPlusLinear.folder),
+                        onPressed: () => loadMyTasks(silent: true),
+                      ),
                     ),
                     9.gap,
                     Chip(label: "Mes offres".t),
@@ -149,10 +155,29 @@ class _MyTasksMainPartState extends State<MyTasksMainPart> with AutomaticKeepAli
   @override
   bool get wantKeepAlive => true;
   // METHODS =================================================================================================================
-  void loadDetails() {}
+  void loadDetails() {
+    isLoadingDetails.value = true;
 
-  void loadMyTasks() {
-    isLoadingMines.value = true;
+    Map<String, dynamic> params = {};
+    var req = CApi.request.get('/task/MBxD0zfaAa', queryParameters: params);
+    req.whenComplete(() => isLoadingDetails.value = false);
+    req.then(
+      (res) {
+        // Logger().t(res.data);
+        if (res.data is Map && res.data['success'] == true) {
+          detailsData = res.data['data'] ?? {};
+        } else {
+          // CToast(context).warning("".t);
+        }
+      },
+      onError: (e) {
+        Logger().e(e);
+      },
+    );
+  }
+
+  void loadMyTasks({bool silent = false}) {
+    if (!silent) isLoadingMines.value = true;
 
     Map<String, dynamic> params = {};
     var req = CApi.request.get('/task/rBWkJQaP4', queryParameters: params);
@@ -338,22 +363,41 @@ class _InnageMyTasksMyOfferWidgetState extends State<_InnageMyTasksMyOfferWidget
                 },
                 menuChildren: [
                   TextButton.icon(onPressed: () {}, icon: Icon(IconsaxPlusLinear.edit), label: Text("Modifier")),
+                  TextButton.icon(onPressed: () {}, icon: Icon(IconsaxPlusLinear.undo), label: Text("Reposter")),
                   TextButton.icon(onPressed: () {}, icon: Icon(IconsaxPlusLinear.trash), label: Text("Supprimer")),
                 ],
               ),
             ],
           ),
           18.gap,
+
+          // Date.
           Text(
             "Plublier ${taskData['created_at'].toString().toDateTime()?.toReadable.ago() ?? "Aucune date de publication"}",
           ).muted,
+
+          // Description & tag.
           Row(
             children: [
-              Text("${taskData['description'] ?? 'Sans description'}", style: context.theme.textTheme.titleLarge).expanded(),
+              Text(
+                "${widget.data['description'] ?? 'Sans description'}",
+                style: context.theme.textTheme.titleLarge,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ).expanded(),
               9.gap,
               Text(EmergencyLevelText(taskData['emergency_level']).text, style: TextStyle(fontWeight: FontWeight.bold)),
             ],
           ),
+
+          // Audio record.
+          if (widget.data['has_audio'] == true) ...[
+            6.gap,
+            Icon(
+              IconsaxPlusLinear.microphone,
+              size: 24,
+            ).stickThis(Text("Enregistrement audio", style: TextStyle(fontWeight: FontWeight.bold))),
+          ],
           18.gap,
           Row(
             children: [
@@ -366,8 +410,9 @@ class _InnageMyTasksMyOfferWidgetState extends State<_InnageMyTasksMyOfferWidget
                           children: [
                             IconButton.outlined(
                               style: ButtonStyle(side: WidgetStatePropertyAll(BorderSide(color: CConsts.COLOR_GREY_LIGHT))),
-                              onPressed: () =>
-                                  CRouter(context).goTo(TaskResponsesRoute(taskId: widget.data['task']?['id'] ?? '---')),
+                              onPressed: () => CRouter(
+                                context,
+                              ).goTo(TaskPostulationResponsesRoute(taskId: widget.data['task']?['id'] ?? '---')),
                               icon: Icon(IconsaxPlusBroken.sms_notification, color: CConsts.COLOR_GREY_LIGHT),
                             ),
                             9.gap,
@@ -381,17 +426,20 @@ class _InnageMyTasksMyOfferWidgetState extends State<_InnageMyTasksMyOfferWidget
                             ).expanded(),
                           ],
                         ),
-                        9.gap,
+                        // 6.gap,
                         Text(
                           "${widget.data['responses_count'] ?? 0}",
                           style: context.theme.textTheme.titleLarge?.copyWith(fontSize: 36, fontWeight: FontWeight.normal),
                         ),
+                        Text("Entrées"),
                       ],
                     ).withPadding(all: 9),
                   )
                   .cursorClick(
                     inkwell: true,
-                    onClick: () => CRouter(context).goTo(TaskResponsesRoute(taskId: widget.data['task']?['id'] ?? '---')),
+                    onClick: () {
+                      CRouter(context).goTo(TaskPostulationResponsesRoute(taskId: widget.data['task_id'] ?? '---'));
+                    },
                   )
                   .expanded(),
               9.gap,
@@ -414,7 +462,7 @@ class _InnageMyTasksMyOfferWidgetState extends State<_InnageMyTasksMyOfferWidget
                           children: [
                             "Exprir dans".t,
                             Text(
-                              widget.data['emergency_level'] == 'FLEXIBLE' ? "Delai flexible" : "Delai normal",
+                              taskData['emergency_level'] == 'FLEXIBLE' ? "Delai flexible" : "Delai normal",
                               style: context.theme.textTheme.labelMedium,
                             ).muted,
                           ],
@@ -422,37 +470,15 @@ class _InnageMyTasksMyOfferWidgetState extends State<_InnageMyTasksMyOfferWidget
                       ],
                     ),
                     9.gap,
-                    Builder(
-                      builder: (context) {
-                        if (taskData['emergency_level'] == 'FLEXIBLE') {
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Se lencera dans ${widget.data['start_in_hours'] ?? 0} heures",
-                                style: context.theme.textTheme.titleLarge?.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                              Text(
-                                "Et expirera dans ${widget.data['expire_in_hours'] ?? 0} heures",
-                                style: context.theme.textTheme.titleLarge?.copyWith(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ],
-                          );
-                        } else {
-                          return Text(
-                            "${widget.data['expire_in_hours'] ?? 0} heures",
-                            style: context.theme.textTheme.titleLarge?.copyWith(fontSize: 30, fontWeight: FontWeight.normal),
-                          );
-                        }
-                      },
+                    Text(
+                      "${widget.data['expire_in_hours'] ?? 0} heures",
+                      style: context.theme.textTheme.titleLarge?.copyWith(
+                        fontSize: 30,
+                        fontWeight: FontWeight.normal,
+                        color: widget.data['is_expired'] == true ? context.theme.colorScheme.error : null,
+                      ),
                     ),
+                    Text(widget.data['expir_date'].toString().toDateTime()?.toReadable.numeric() ?? "Aucune date de fin"),
                   ],
                 ).withPadding(all: 9),
               ).expanded(),

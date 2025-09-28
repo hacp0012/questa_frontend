@@ -66,7 +66,10 @@ class _ProfileMainPartState extends State<ProfileMainPart> with AutomaticKeepAli
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("${userData['name'] ?? 'N/A'}", style: context.theme.textTheme.titleMedium),
+                  Text(
+                    "${userData['name'] ?? 'N/A'}",
+                    style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  ),
                   9.gap,
                   FilledButton.tonalIcon(
                     style: ButtonStyle(

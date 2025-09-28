@@ -9,11 +9,11 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i28;
-import 'package:flutter/cupertino.dart' as _i31;
-import 'package:flutter/foundation.dart' as _i29;
-import 'package:flutter/material.dart' as _i30;
-import 'package:go_router/go_router.dart' as _i32;
+import 'package:auto_route/auto_route.dart' as _i29;
+import 'package:flutter/cupertino.dart' as _i32;
+import 'package:flutter/foundation.dart' as _i30;
+import 'package:flutter/material.dart' as _i31;
+import 'package:go_router/go_router.dart' as _i33;
 import 'package:questa/view/screens/app/about_app_screen.dart' as _i1;
 import 'package:questa/view/screens/app/onboard_screen.dart' as _i10;
 import 'package:questa/view/screens/app/privacy_policy_screen.dart' as _i11;
@@ -22,10 +22,11 @@ import 'package:questa/view/screens/error_screen.dart' as _i7;
 import 'package:questa/view/screens/main/main_screen.dart' as _i8;
 import 'package:questa/view/screens/pages/chat_screen.dart' as _i5;
 import 'package:questa/view/screens/pages/notifications_screen.dart' as _i9;
-import 'package:questa/view/screens/pages/taskers_screen.dart' as _i24;
+import 'package:questa/view/screens/pages/taskers_screen.dart' as _i25;
 import 'package:questa/view/screens/tasks/task_new_task_screen.dart' as _i13;
+import 'package:questa/view/screens/tasks/task_read_screen.dart' as _i15;
 import 'package:questa/view/screens/tasks/task_responses_screen.dart' as _i14;
-import 'package:questa/view/screens/tasks/task_skills_menu_screen.dart' as _i15;
+import 'package:questa/view/screens/tasks/task_skills_menu_screen.dart' as _i16;
 import 'package:questa/view/screens/user/auth/auth_login_screen.dart' as _i2;
 import 'package:questa/view/screens/user/auth/auth_opt_login_screen.dart'
     as _i3;
@@ -33,36 +34,36 @@ import 'package:questa/view/screens/user/auth/auth_register_screen.dart' as _i4;
 import 'package:questa/view/screens/user/tasker/delete_tasker_profile_screen.dart'
     as _i6;
 import 'package:questa/view/screens/user/tasker/tasker_edit_profile_screen.dart'
-    as _i16;
-import 'package:questa/view/screens/user/tasker/tasker_portfolio_add_screen.dart'
     as _i17;
-import 'package:questa/view/screens/user/tasker/tasker_portfolio_edit_screen.dart'
+import 'package:questa/view/screens/user/tasker/tasker_portfolio_add_screen.dart'
     as _i18;
-import 'package:questa/view/screens/user/tasker/tasker_portfolio_read_screen.dart'
+import 'package:questa/view/screens/user/tasker/tasker_portfolio_edit_screen.dart'
     as _i19;
-import 'package:questa/view/screens/user/tasker/tasker_profile_screen.dart'
+import 'package:questa/view/screens/user/tasker/tasker_portfolio_read_screen.dart'
     as _i20;
-import 'package:questa/view/screens/user/tasker/tasker_register_screen.dart'
+import 'package:questa/view/screens/user/tasker/tasker_profile_screen.dart'
     as _i21;
-import 'package:questa/view/screens/user/tasker/tasker_user_main_screen.dart'
+import 'package:questa/view/screens/user/tasker/tasker_register_screen.dart'
     as _i22;
-import 'package:questa/view/screens/user/tasker/tasker_validation_ids_screen.dart'
+import 'package:questa/view/screens/user/tasker/tasker_user_main_screen.dart'
     as _i23;
+import 'package:questa/view/screens/user/tasker/tasker_validation_ids_screen.dart'
+    as _i24;
 import 'package:questa/view/screens/user/user_delete_profile_screen.dart'
-    as _i25;
-import 'package:questa/view/screens/user/user_profile_option_screen.dart'
     as _i26;
-import 'package:questa/view/screens/user/user_profile_read_screen.dart' as _i27;
+import 'package:questa/view/screens/user/user_profile_option_screen.dart'
+    as _i27;
+import 'package:questa/view/screens/user/user_profile_read_screen.dart' as _i28;
 
 /// generated route for
 /// [_i1.AboutAppScreen]
-class AboutAppRoute extends _i28.PageRouteInfo<void> {
-  const AboutAppRoute({List<_i28.PageRouteInfo>? children})
+class AboutAppRoute extends _i29.PageRouteInfo<void> {
+  const AboutAppRoute({List<_i29.PageRouteInfo>? children})
     : super(AboutAppRoute.name, initialChildren: children);
 
   static const String name = 'AboutAppRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i1.AboutAppScreen();
@@ -72,11 +73,11 @@ class AboutAppRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AuthLoginScreen]
-class AuthLoginRoute extends _i28.PageRouteInfo<AuthLoginRouteArgs> {
+class AuthLoginRoute extends _i29.PageRouteInfo<AuthLoginRouteArgs> {
   AuthLoginRoute({
-    _i29.Key? key,
+    _i30.Key? key,
     dynamic Function(bool)? onLogin,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          AuthLoginRoute.name,
          args: AuthLoginRouteArgs(key: key, onLogin: onLogin),
@@ -85,7 +86,7 @@ class AuthLoginRoute extends _i28.PageRouteInfo<AuthLoginRouteArgs> {
 
   static const String name = 'AuthLoginRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AuthLoginRouteArgs>(
@@ -99,7 +100,7 @@ class AuthLoginRoute extends _i28.PageRouteInfo<AuthLoginRouteArgs> {
 class AuthLoginRouteArgs {
   const AuthLoginRouteArgs({this.key, this.onLogin});
 
-  final _i29.Key? key;
+  final _i30.Key? key;
 
   final dynamic Function(bool)? onLogin;
 
@@ -121,14 +122,14 @@ class AuthLoginRouteArgs {
 
 /// generated route for
 /// [_i3.AuthOtpLoginScreen]
-class AuthOtpLoginRoute extends _i28.PageRouteInfo<AuthOtpLoginRouteArgs> {
+class AuthOtpLoginRoute extends _i29.PageRouteInfo<AuthOtpLoginRouteArgs> {
   AuthOtpLoginRoute({
-    _i29.Key? key,
+    _i30.Key? key,
     required String? phoneCode,
     required String? phoneNumber,
     bool isRegister = false,
     String? otp,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          AuthOtpLoginRoute.name,
          args: AuthOtpLoginRouteArgs(
@@ -149,7 +150,7 @@ class AuthOtpLoginRoute extends _i28.PageRouteInfo<AuthOtpLoginRouteArgs> {
 
   static const String name = 'AuthOtpLoginRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -181,7 +182,7 @@ class AuthOtpLoginRouteArgs {
     this.otp,
   });
 
-  final _i29.Key? key;
+  final _i30.Key? key;
 
   final String? phoneCode;
 
@@ -218,12 +219,12 @@ class AuthOtpLoginRouteArgs {
 
 /// generated route for
 /// [_i4.AuthRegisterScreen]
-class AuthRegisterRoute extends _i28.PageRouteInfo<AuthRegisterRouteArgs> {
+class AuthRegisterRoute extends _i29.PageRouteInfo<AuthRegisterRouteArgs> {
   AuthRegisterRoute({
-    _i30.Key? key,
+    _i31.Key? key,
     String? phoneCode,
     String? phoneNumber,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          AuthRegisterRoute.name,
          args: AuthRegisterRouteArgs(
@@ -237,7 +238,7 @@ class AuthRegisterRoute extends _i28.PageRouteInfo<AuthRegisterRouteArgs> {
 
   static const String name = 'AuthRegisterRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -259,7 +260,7 @@ class AuthRegisterRoute extends _i28.PageRouteInfo<AuthRegisterRouteArgs> {
 class AuthRegisterRouteArgs {
   const AuthRegisterRouteArgs({this.key, this.phoneCode, this.phoneNumber});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final String? phoneCode;
 
@@ -285,13 +286,13 @@ class AuthRegisterRouteArgs {
 
 /// generated route for
 /// [_i5.ChatScreen]
-class ChatRoute extends _i28.PageRouteInfo<void> {
-  const ChatRoute({List<_i28.PageRouteInfo>? children})
+class ChatRoute extends _i29.PageRouteInfo<void> {
+  const ChatRoute({List<_i29.PageRouteInfo>? children})
     : super(ChatRoute.name, initialChildren: children);
 
   static const String name = 'ChatRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i5.ChatScreen();
@@ -301,13 +302,13 @@ class ChatRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.DeleteTaskerProfileScreen]
-class DeleteTaskerProfileRoute extends _i28.PageRouteInfo<void> {
-  const DeleteTaskerProfileRoute({List<_i28.PageRouteInfo>? children})
+class DeleteTaskerProfileRoute extends _i29.PageRouteInfo<void> {
+  const DeleteTaskerProfileRoute({List<_i29.PageRouteInfo>? children})
     : super(DeleteTaskerProfileRoute.name, initialChildren: children);
 
   static const String name = 'DeleteTaskerProfileRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i6.DeleteTaskerProfileScreen();
@@ -317,11 +318,11 @@ class DeleteTaskerProfileRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.ErrorScreen]
-class ErrorRoute extends _i28.PageRouteInfo<ErrorRouteArgs> {
+class ErrorRoute extends _i29.PageRouteInfo<ErrorRouteArgs> {
   ErrorRoute({
-    _i31.Key? key,
-    required _i32.GoRouterState routeState,
-    List<_i28.PageRouteInfo>? children,
+    _i32.Key? key,
+    required _i33.GoRouterState routeState,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          ErrorRoute.name,
          args: ErrorRouteArgs(key: key, routeState: routeState),
@@ -330,7 +331,7 @@ class ErrorRoute extends _i28.PageRouteInfo<ErrorRouteArgs> {
 
   static const String name = 'ErrorRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ErrorRouteArgs>();
@@ -342,9 +343,9 @@ class ErrorRoute extends _i28.PageRouteInfo<ErrorRouteArgs> {
 class ErrorRouteArgs {
   const ErrorRouteArgs({this.key, required this.routeState});
 
-  final _i31.Key? key;
+  final _i32.Key? key;
 
-  final _i32.GoRouterState routeState;
+  final _i33.GoRouterState routeState;
 
   @override
   String toString() {
@@ -364,13 +365,13 @@ class ErrorRouteArgs {
 
 /// generated route for
 /// [_i8.MainScreen]
-class MainScreenRoute extends _i28.PageRouteInfo<void> {
-  const MainScreenRoute({List<_i28.PageRouteInfo>? children})
+class MainScreenRoute extends _i29.PageRouteInfo<void> {
+  const MainScreenRoute({List<_i29.PageRouteInfo>? children})
     : super(MainScreenRoute.name, initialChildren: children);
 
   static const String name = 'MainScreenRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i8.MainScreen();
@@ -380,13 +381,13 @@ class MainScreenRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.MyTasksMainPart]
-class MyTasksMainPartRoute extends _i28.PageRouteInfo<void> {
-  const MyTasksMainPartRoute({List<_i28.PageRouteInfo>? children})
+class MyTasksMainPartRoute extends _i29.PageRouteInfo<void> {
+  const MyTasksMainPartRoute({List<_i29.PageRouteInfo>? children})
     : super(MyTasksMainPartRoute.name, initialChildren: children);
 
   static const String name = 'MyTasksMainPartRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i8.MyTasksMainPart();
@@ -396,13 +397,13 @@ class MyTasksMainPartRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.NotificationsScreen]
-class NotificationsRoute extends _i28.PageRouteInfo<void> {
-  const NotificationsRoute({List<_i28.PageRouteInfo>? children})
+class NotificationsRoute extends _i29.PageRouteInfo<void> {
+  const NotificationsRoute({List<_i29.PageRouteInfo>? children})
     : super(NotificationsRoute.name, initialChildren: children);
 
   static const String name = 'NotificationsRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i9.NotificationsScreen();
@@ -412,13 +413,13 @@ class NotificationsRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.OnboardScreen]
-class OnboardRoute extends _i28.PageRouteInfo<void> {
-  const OnboardRoute({List<_i28.PageRouteInfo>? children})
+class OnboardRoute extends _i29.PageRouteInfo<void> {
+  const OnboardRoute({List<_i29.PageRouteInfo>? children})
     : super(OnboardRoute.name, initialChildren: children);
 
   static const String name = 'OnboardRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i10.OnboardScreen();
@@ -428,13 +429,13 @@ class OnboardRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.PrivacyPolicyScreen]
-class PrivacyPolicyRoute extends _i28.PageRouteInfo<void> {
-  const PrivacyPolicyRoute({List<_i28.PageRouteInfo>? children})
+class PrivacyPolicyRoute extends _i29.PageRouteInfo<void> {
+  const PrivacyPolicyRoute({List<_i29.PageRouteInfo>? children})
     : super(PrivacyPolicyRoute.name, initialChildren: children);
 
   static const String name = 'PrivacyPolicyRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i11.PrivacyPolicyScreen();
@@ -444,13 +445,13 @@ class PrivacyPolicyRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.ProfileMainPart]
-class ProfileMainPartRoute extends _i28.PageRouteInfo<void> {
-  const ProfileMainPartRoute({List<_i28.PageRouteInfo>? children})
+class ProfileMainPartRoute extends _i29.PageRouteInfo<void> {
+  const ProfileMainPartRoute({List<_i29.PageRouteInfo>? children})
     : super(ProfileMainPartRoute.name, initialChildren: children);
 
   static const String name = 'ProfileMainPartRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i8.ProfileMainPart();
@@ -460,13 +461,13 @@ class ProfileMainPartRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.ResponsesMainPart]
-class ResponsesMainPartRoute extends _i28.PageRouteInfo<void> {
-  const ResponsesMainPartRoute({List<_i28.PageRouteInfo>? children})
+class ResponsesMainPartRoute extends _i29.PageRouteInfo<void> {
+  const ResponsesMainPartRoute({List<_i29.PageRouteInfo>? children})
     : super(ResponsesMainPartRoute.name, initialChildren: children);
 
   static const String name = 'ResponsesMainPartRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i8.ResponsesMainPart();
@@ -476,11 +477,11 @@ class ResponsesMainPartRoute extends _i28.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.ShareAppScreen]
-class ShareAppRoute extends _i28.PageRouteInfo<ShareAppRouteArgs> {
+class ShareAppRoute extends _i29.PageRouteInfo<ShareAppRouteArgs> {
   ShareAppRoute({
-    _i30.Key? key,
+    _i31.Key? key,
     bool isShared = false,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          ShareAppRoute.name,
          args: ShareAppRouteArgs(key: key, isShared: isShared),
@@ -489,7 +490,7 @@ class ShareAppRoute extends _i28.PageRouteInfo<ShareAppRouteArgs> {
 
   static const String name = 'ShareAppRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ShareAppRouteArgs>(
@@ -503,7 +504,7 @@ class ShareAppRoute extends _i28.PageRouteInfo<ShareAppRouteArgs> {
 class ShareAppRouteArgs {
   const ShareAppRouteArgs({this.key, this.isShared = false});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final bool isShared;
 
@@ -525,12 +526,12 @@ class ShareAppRouteArgs {
 
 /// generated route for
 /// [_i13.TaskNewTaskScreen]
-class TaskNewTaskRoute extends _i28.PageRouteInfo<TaskNewTaskRouteArgs> {
+class TaskNewTaskRoute extends _i29.PageRouteInfo<TaskNewTaskRouteArgs> {
   TaskNewTaskRoute({
-    _i30.Key? key,
+    _i31.Key? key,
     String? skillId,
     String? taskName,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          TaskNewTaskRoute.name,
          args: TaskNewTaskRouteArgs(
@@ -544,7 +545,7 @@ class TaskNewTaskRoute extends _i28.PageRouteInfo<TaskNewTaskRouteArgs> {
 
   static const String name = 'TaskNewTaskRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -566,7 +567,7 @@ class TaskNewTaskRoute extends _i28.PageRouteInfo<TaskNewTaskRouteArgs> {
 class TaskNewTaskRouteArgs {
   const TaskNewTaskRouteArgs({this.key, this.skillId, this.taskName});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final String? skillId;
 
@@ -591,45 +592,49 @@ class TaskNewTaskRouteArgs {
 }
 
 /// generated route for
-/// [_i14.TaskResponsesScreen]
-class TaskResponsesRoute extends _i28.PageRouteInfo<TaskResponsesRouteArgs> {
-  TaskResponsesRoute({
-    _i30.Key? key,
+/// [_i14.TaskPostulationResponsesScreen]
+class TaskPostulationResponsesRoute
+    extends _i29.PageRouteInfo<TaskPostulationResponsesRouteArgs> {
+  TaskPostulationResponsesRoute({
+    _i31.Key? key,
     required String taskId,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
-         TaskResponsesRoute.name,
-         args: TaskResponsesRouteArgs(key: key, taskId: taskId),
+         TaskPostulationResponsesRoute.name,
+         args: TaskPostulationResponsesRouteArgs(key: key, taskId: taskId),
          initialChildren: children,
        );
 
-  static const String name = 'TaskResponsesRoute';
+  static const String name = 'TaskPostulationResponsesRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<TaskResponsesRouteArgs>();
-      return _i14.TaskResponsesScreen(key: args.key, taskId: args.taskId);
+      final args = data.argsAs<TaskPostulationResponsesRouteArgs>();
+      return _i14.TaskPostulationResponsesScreen(
+        key: args.key,
+        taskId: args.taskId,
+      );
     },
   );
 }
 
-class TaskResponsesRouteArgs {
-  const TaskResponsesRouteArgs({this.key, required this.taskId});
+class TaskPostulationResponsesRouteArgs {
+  const TaskPostulationResponsesRouteArgs({this.key, required this.taskId});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final String taskId;
 
   @override
   String toString() {
-    return 'TaskResponsesRouteArgs{key: $key, taskId: $taskId}';
+    return 'TaskPostulationResponsesRouteArgs{key: $key, taskId: $taskId}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (other is! TaskResponsesRouteArgs) return false;
+    if (other is! TaskPostulationResponsesRouteArgs) return false;
     return key == other.key && taskId == other.taskId;
   }
 
@@ -638,12 +643,64 @@ class TaskResponsesRouteArgs {
 }
 
 /// generated route for
-/// [_i15.TaskSkillsMenuScreen]
-class TaskSkillsMenuRoute extends _i28.PageRouteInfo<TaskSkillsMenuRouteArgs> {
+/// [_i15.TaskReadScreen]
+class TaskReadRoute extends _i29.PageRouteInfo<TaskReadRouteArgs> {
+  TaskReadRoute({
+    _i31.Key? key,
+    String? taskId,
+    List<_i29.PageRouteInfo>? children,
+  }) : super(
+         TaskReadRoute.name,
+         args: TaskReadRouteArgs(key: key, taskId: taskId),
+         rawQueryParams: {'taskId': taskId},
+         initialChildren: children,
+       );
+
+  static const String name = 'TaskReadRoute';
+
+  static _i29.PageInfo page = _i29.PageInfo(
+    name,
+    builder: (data) {
+      final queryParams = data.queryParams;
+      final args = data.argsAs<TaskReadRouteArgs>(
+        orElse: () =>
+            TaskReadRouteArgs(taskId: queryParams.optString('taskId')),
+      );
+      return _i15.TaskReadScreen(key: args.key, taskId: args.taskId);
+    },
+  );
+}
+
+class TaskReadRouteArgs {
+  const TaskReadRouteArgs({this.key, this.taskId});
+
+  final _i31.Key? key;
+
+  final String? taskId;
+
+  @override
+  String toString() {
+    return 'TaskReadRouteArgs{key: $key, taskId: $taskId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! TaskReadRouteArgs) return false;
+    return key == other.key && taskId == other.taskId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ taskId.hashCode;
+}
+
+/// generated route for
+/// [_i16.TaskSkillsMenuScreen]
+class TaskSkillsMenuRoute extends _i29.PageRouteInfo<TaskSkillsMenuRouteArgs> {
   TaskSkillsMenuRoute({
-    _i30.Key? key,
+    _i31.Key? key,
     String? title,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          TaskSkillsMenuRoute.name,
          args: TaskSkillsMenuRouteArgs(key: key, title: title),
@@ -653,7 +710,7 @@ class TaskSkillsMenuRoute extends _i28.PageRouteInfo<TaskSkillsMenuRouteArgs> {
 
   static const String name = 'TaskSkillsMenuRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -661,7 +718,7 @@ class TaskSkillsMenuRoute extends _i28.PageRouteInfo<TaskSkillsMenuRouteArgs> {
         orElse: () =>
             TaskSkillsMenuRouteArgs(title: queryParams.optString('title')),
       );
-      return _i15.TaskSkillsMenuScreen(key: args.key, title: args.title);
+      return _i16.TaskSkillsMenuScreen(key: args.key, title: args.title);
     },
   );
 }
@@ -669,7 +726,7 @@ class TaskSkillsMenuRoute extends _i28.PageRouteInfo<TaskSkillsMenuRouteArgs> {
 class TaskSkillsMenuRouteArgs {
   const TaskSkillsMenuRouteArgs({this.key, this.title});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final String? title;
 
@@ -690,45 +747,45 @@ class TaskSkillsMenuRouteArgs {
 }
 
 /// generated route for
-/// [_i16.TaskerEditProfileScreen]
-class TaskerEditProfileRoute extends _i28.PageRouteInfo<void> {
-  const TaskerEditProfileRoute({List<_i28.PageRouteInfo>? children})
+/// [_i17.TaskerEditProfileScreen]
+class TaskerEditProfileRoute extends _i29.PageRouteInfo<void> {
+  const TaskerEditProfileRoute({List<_i29.PageRouteInfo>? children})
     : super(TaskerEditProfileRoute.name, initialChildren: children);
 
   static const String name = 'TaskerEditProfileRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i16.TaskerEditProfileScreen();
+      return const _i17.TaskerEditProfileScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i17.TaskerPortfolioAddScreen]
-class TaskerPortfolioAddRoute extends _i28.PageRouteInfo<void> {
-  const TaskerPortfolioAddRoute({List<_i28.PageRouteInfo>? children})
+/// [_i18.TaskerPortfolioAddScreen]
+class TaskerPortfolioAddRoute extends _i29.PageRouteInfo<void> {
+  const TaskerPortfolioAddRoute({List<_i29.PageRouteInfo>? children})
     : super(TaskerPortfolioAddRoute.name, initialChildren: children);
 
   static const String name = 'TaskerPortfolioAddRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i17.TaskerPortfolioAddScreen();
+      return const _i18.TaskerPortfolioAddScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i18.TaskerPortfolioEditScreen]
+/// [_i19.TaskerPortfolioEditScreen]
 class TaskerPortfolioEditRoute
-    extends _i28.PageRouteInfo<TaskerPortfolioEditRouteArgs> {
+    extends _i29.PageRouteInfo<TaskerPortfolioEditRouteArgs> {
   TaskerPortfolioEditRoute({
-    _i29.Key? key,
+    _i30.Key? key,
     String? portfolioId,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          TaskerPortfolioEditRoute.name,
          args: TaskerPortfolioEditRouteArgs(key: key, portfolioId: portfolioId),
@@ -738,7 +795,7 @@ class TaskerPortfolioEditRoute
 
   static const String name = 'TaskerPortfolioEditRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -747,7 +804,7 @@ class TaskerPortfolioEditRoute
           portfolioId: queryParams.optString('portfolioId'),
         ),
       );
-      return _i18.TaskerPortfolioEditScreen(
+      return _i19.TaskerPortfolioEditScreen(
         key: args.key,
         portfolioId: args.portfolioId,
       );
@@ -758,7 +815,7 @@ class TaskerPortfolioEditRoute
 class TaskerPortfolioEditRouteArgs {
   const TaskerPortfolioEditRouteArgs({this.key, this.portfolioId});
 
-  final _i29.Key? key;
+  final _i30.Key? key;
 
   final String? portfolioId;
 
@@ -779,13 +836,13 @@ class TaskerPortfolioEditRouteArgs {
 }
 
 /// generated route for
-/// [_i19.TaskerPortfolioReadScreen]
+/// [_i20.TaskerPortfolioReadScreen]
 class TaskerPortfolioReadRoute
-    extends _i28.PageRouteInfo<TaskerPortfolioReadRouteArgs> {
+    extends _i29.PageRouteInfo<TaskerPortfolioReadRouteArgs> {
   TaskerPortfolioReadRoute({
-    _i30.Key? key,
+    _i31.Key? key,
     String? portfolioId,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          TaskerPortfolioReadRoute.name,
          args: TaskerPortfolioReadRouteArgs(key: key, portfolioId: portfolioId),
@@ -795,7 +852,7 @@ class TaskerPortfolioReadRoute
 
   static const String name = 'TaskerPortfolioReadRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -804,7 +861,7 @@ class TaskerPortfolioReadRoute
           portfolioId: queryParams.optString('portfolioId'),
         ),
       );
-      return _i19.TaskerPortfolioReadScreen(
+      return _i20.TaskerPortfolioReadScreen(
         key: args.key,
         portfolioId: args.portfolioId,
       );
@@ -815,7 +872,7 @@ class TaskerPortfolioReadRoute
 class TaskerPortfolioReadRouteArgs {
   const TaskerPortfolioReadRouteArgs({this.key, this.portfolioId});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final String? portfolioId;
 
@@ -836,94 +893,130 @@ class TaskerPortfolioReadRouteArgs {
 }
 
 /// generated route for
-/// [_i20.TaskerProfileScreen]
-class TaskerProfileRoute extends _i28.PageRouteInfo<void> {
-  const TaskerProfileRoute({List<_i28.PageRouteInfo>? children})
-    : super(TaskerProfileRoute.name, initialChildren: children);
+/// [_i21.TaskerProfileScreen]
+class TaskerProfileRoute extends _i29.PageRouteInfo<TaskerProfileRouteArgs> {
+  TaskerProfileRoute({
+    _i31.Key? key,
+    required String? taskerId,
+    List<_i29.PageRouteInfo>? children,
+  }) : super(
+         TaskerProfileRoute.name,
+         args: TaskerProfileRouteArgs(key: key, taskerId: taskerId),
+         rawQueryParams: {'taskerId': taskerId},
+         initialChildren: children,
+       );
 
   static const String name = 'TaskerProfileRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i20.TaskerProfileScreen();
+      final queryParams = data.queryParams;
+      final args = data.argsAs<TaskerProfileRouteArgs>(
+        orElse: () =>
+            TaskerProfileRouteArgs(taskerId: queryParams.optString('taskerId')),
+      );
+      return _i21.TaskerProfileScreen(key: args.key, taskerId: args.taskerId);
     },
   );
 }
 
+class TaskerProfileRouteArgs {
+  const TaskerProfileRouteArgs({this.key, required this.taskerId});
+
+  final _i31.Key? key;
+
+  final String? taskerId;
+
+  @override
+  String toString() {
+    return 'TaskerProfileRouteArgs{key: $key, taskerId: $taskerId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! TaskerProfileRouteArgs) return false;
+    return key == other.key && taskerId == other.taskerId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ taskerId.hashCode;
+}
+
 /// generated route for
-/// [_i21.TaskerRegisterScreen]
-class TaskerRegisterRoute extends _i28.PageRouteInfo<void> {
-  const TaskerRegisterRoute({List<_i28.PageRouteInfo>? children})
+/// [_i22.TaskerRegisterScreen]
+class TaskerRegisterRoute extends _i29.PageRouteInfo<void> {
+  const TaskerRegisterRoute({List<_i29.PageRouteInfo>? children})
     : super(TaskerRegisterRoute.name, initialChildren: children);
 
   static const String name = 'TaskerRegisterRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i21.TaskerRegisterScreen();
+      return const _i22.TaskerRegisterScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i22.TaskerUserMainScreen]
-class TaskerUserMainRoute extends _i28.PageRouteInfo<void> {
-  const TaskerUserMainRoute({List<_i28.PageRouteInfo>? children})
+/// [_i23.TaskerUserMainScreen]
+class TaskerUserMainRoute extends _i29.PageRouteInfo<void> {
+  const TaskerUserMainRoute({List<_i29.PageRouteInfo>? children})
     : super(TaskerUserMainRoute.name, initialChildren: children);
 
   static const String name = 'TaskerUserMainRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i22.TaskerUserMainScreen();
+      return const _i23.TaskerUserMainScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i23.TaskerValidationIdsScreen]
-class TaskerValidationIdsRoute extends _i28.PageRouteInfo<void> {
-  const TaskerValidationIdsRoute({List<_i28.PageRouteInfo>? children})
+/// [_i24.TaskerValidationIdsScreen]
+class TaskerValidationIdsRoute extends _i29.PageRouteInfo<void> {
+  const TaskerValidationIdsRoute({List<_i29.PageRouteInfo>? children})
     : super(TaskerValidationIdsRoute.name, initialChildren: children);
 
   static const String name = 'TaskerValidationIdsRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i23.TaskerValidationIdsScreen();
+      return const _i24.TaskerValidationIdsScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i24.TaskersScreen]
-class TaskersRoute extends _i28.PageRouteInfo<void> {
-  const TaskersRoute({List<_i28.PageRouteInfo>? children})
+/// [_i25.TaskersScreen]
+class TaskersRoute extends _i29.PageRouteInfo<void> {
+  const TaskersRoute({List<_i29.PageRouteInfo>? children})
     : super(TaskersRoute.name, initialChildren: children);
 
   static const String name = 'TaskersRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i24.TaskersScreen();
+      return const _i25.TaskersScreen();
     },
   );
 }
 
 /// generated route for
 /// [_i8.TasksMainPart]
-class TasksMainPartRoute extends _i28.PageRouteInfo<void> {
-  const TasksMainPartRoute({List<_i28.PageRouteInfo>? children})
+class TasksMainPartRoute extends _i29.PageRouteInfo<void> {
+  const TasksMainPartRoute({List<_i29.PageRouteInfo>? children})
     : super(TasksMainPartRoute.name, initialChildren: children);
 
   static const String name = 'TasksMainPartRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       return const _i8.TasksMainPart();
@@ -932,45 +1025,45 @@ class TasksMainPartRoute extends _i28.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i25.UserDeleteProfileScreen]
-class UserDeleteProfileRoute extends _i28.PageRouteInfo<void> {
-  const UserDeleteProfileRoute({List<_i28.PageRouteInfo>? children})
+/// [_i26.UserDeleteProfileScreen]
+class UserDeleteProfileRoute extends _i29.PageRouteInfo<void> {
+  const UserDeleteProfileRoute({List<_i29.PageRouteInfo>? children})
     : super(UserDeleteProfileRoute.name, initialChildren: children);
 
   static const String name = 'UserDeleteProfileRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i25.UserDeleteProfileScreen();
+      return const _i26.UserDeleteProfileScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i26.UserProfileOptionScreen]
-class UserProfileOptionRoute extends _i28.PageRouteInfo<void> {
-  const UserProfileOptionRoute({List<_i28.PageRouteInfo>? children})
+/// [_i27.UserProfileOptionScreen]
+class UserProfileOptionRoute extends _i29.PageRouteInfo<void> {
+  const UserProfileOptionRoute({List<_i29.PageRouteInfo>? children})
     : super(UserProfileOptionRoute.name, initialChildren: children);
 
   static const String name = 'UserProfileOptionRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i26.UserProfileOptionScreen();
+      return const _i27.UserProfileOptionScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i27.UserProfileReadScreen]
+/// [_i28.UserProfileReadScreen]
 class UserProfileReadRoute
-    extends _i28.PageRouteInfo<UserProfileReadRouteArgs> {
+    extends _i29.PageRouteInfo<UserProfileReadRouteArgs> {
   UserProfileReadRoute({
-    _i30.Key? key,
+    _i31.Key? key,
     String? userId,
-    List<_i28.PageRouteInfo>? children,
+    List<_i29.PageRouteInfo>? children,
   }) : super(
          UserProfileReadRoute.name,
          args: UserProfileReadRouteArgs(key: key, userId: userId),
@@ -980,7 +1073,7 @@ class UserProfileReadRoute
 
   static const String name = 'UserProfileReadRoute';
 
-  static _i28.PageInfo page = _i28.PageInfo(
+  static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
       final queryParams = data.queryParams;
@@ -988,7 +1081,7 @@ class UserProfileReadRoute
         orElse: () =>
             UserProfileReadRouteArgs(userId: queryParams.optString('userId')),
       );
-      return _i27.UserProfileReadScreen(key: args.key, userId: args.userId);
+      return _i28.UserProfileReadScreen(key: args.key, userId: args.userId);
     },
   );
 }
@@ -996,7 +1089,7 @@ class UserProfileReadRoute
 class UserProfileReadRouteArgs {
   const UserProfileReadRouteArgs({this.key, this.userId});
 
-  final _i30.Key? key;
+  final _i31.Key? key;
 
   final String? userId;
 

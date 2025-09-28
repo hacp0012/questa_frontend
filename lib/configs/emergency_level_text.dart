@@ -1,6 +1,6 @@
 class EmergencyLevelText {
   EmergencyLevelText(this._key);
-  String? _key;
+  final String? _key;
 
   // 'IMMEDIATE', 'TODAY', 'SHORT_TERM', 'FLEXIBLE'
   String imediate = "Imediat";

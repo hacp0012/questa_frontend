@@ -22,12 +22,14 @@ import 'package:questa/view/screens/tasks/task_skills_menu_screen.dart';
 import 'package:questa/view/theme/configs/tc_buttons.dart';
 import 'package:questa/view/widgets/c_modal_widget.dart';
 import 'package:questa/view/widgets/c_toast.dart';
+import 'package:questa/view/widgets/chip_widget.dart';
 import 'package:questa/view/widgets/divider_widget.dart';
 import 'package:questa/view/widgets/icon_button_widget.dart';
 import 'package:bottom_bar/bottom_bar.dart';
 import 'package:questa/view/widgets/photo_viewer_widget.dart';
+import 'package:questa/view/widgets/spinner_widget.dart';
+import 'package:run_it/run_it.dart';
 import 'package:ui_value/ui_value.dart';
-import 'package:responsive_grid/responsive_grid.dart';
 
 part './parts/appbar_main_screnn_part.dart';
 part './parts/responses_main_part.dart';
@@ -173,7 +175,7 @@ class _MainScreenState extends State<MainScreen> with UiValueMixin {
                   BottomBarItem(
                     inactiveIcon: Icon(IconsaxPlusBroken.messages, color: Colors.grey),
                     icon: Icon(IconsaxPlusLinear.messages),
-                    title: Text('Reponses'),
+                    title: Text('Chats'),
                     activeColor: Colors.greenAccent.shade700,
                     activeTitleColor: context.theme.colorScheme.secondary,
                     activeIconColor: context.theme.colorScheme.secondary,

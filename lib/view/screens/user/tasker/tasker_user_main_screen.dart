@@ -89,7 +89,7 @@ class _TaskerUserMainScreenState extends State<TaskerUserMainScreen> with UiValu
                 TextButton.icon(
                   onPressed: () {
                     menuAnchorController.close();
-                    CRouter(context).goTo(TaskerProfileRoute());
+                    CRouter(context).goTo(TaskerProfileRoute(taskerId: deatails['tasker_id'] ?? '---'));
                   },
                   icon: Icon(IconsaxPlusLinear.user),
                   label: "Afficher mon profile PRO".t,

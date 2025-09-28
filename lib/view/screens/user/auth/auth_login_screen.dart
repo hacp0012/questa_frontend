@@ -140,6 +140,8 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> with UiValueMixin {
                     //     ),
                     //   ],
                     // ),
+
+                    // LOGIN BUTTON.
                     27.gap,
                     Row(
                       children: [
@@ -147,9 +149,11 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> with UiValueMixin {
                           onPressed: isChecking.value ? null : checkPhoneNumber,
                           label: "Se connecter".t,
                           icon: isChecking.value ? SpinnerWidget(size: 19) : Icon(IconsaxPlusLinear.login),
-                          style: TcButtonsLight.blackButtonTheme.copyWith(
-                            padding: WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 18)),
-                          ),
+                          style: isChecking.value
+                              ? null
+                              : TcButtonsLight.blackButtonTheme.copyWith(
+                                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 18)),
+                                ),
                         ).expanded(),
                       ],
                     ),

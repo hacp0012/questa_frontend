@@ -17,5 +17,6 @@ var userRoutes = [
   AutoRoute(path: '/3ic4roxT2VAKfPo0jf', guards: [ARAuthGuard()], page: UserProfileReadRoute.page),
   AutoRoute(path: '/4kaGML2g3C15B06BSD', guards: [ARAuthGuard()], page: TaskersRoute.page),
   AutoRoute(path: '/r51h4860324x8wdgq2', guards: [ARAuthGuard()], page: NotificationsRoute.page),
-  AutoRoute(path: '/i00395959776899814', guards: [ARAuthGuard()], page: TaskResponsesRoute.page),
+  AutoRoute(path: '/i00395959776899814', guards: [ARAuthGuard()], page: TaskPostulationResponsesRoute.page),
+  AutoRoute(path: '/Cuup5glJ26sxgy0b9Q', guards: [ARAuthGuard()], page: TaskReadRoute.page),
 ];
