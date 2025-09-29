@@ -36,5 +36,5 @@ class CConsts {
   static const String API_URL = kDebugMode ? DEV_URL : PROD_URL;
 
   // APP //
-  static const String APP_VERSION = '1.0.0+23';
+  static const String APP_VERSION = '1.0.0+27';
 }

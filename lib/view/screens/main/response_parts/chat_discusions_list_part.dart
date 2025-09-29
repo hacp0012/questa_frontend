@@ -22,7 +22,7 @@ class _ChatDiscusionsListPartState extends State<ChatDiscusionsListPart>
   void initState() {
     super.initState();
     _loadDetails();
-    // _loadChats();
+    _loadChats();
   }
 
   @override
@@ -146,7 +146,7 @@ class _ChatDiscusionsListPartState extends State<ChatDiscusionsListPart>
                       onPressed: () {
                         CRouter(context).goTo(TaskSkillsMenuRoute(title: "Créer une tache"));
                         Dsi.registerCallback(DsiKeys.SKILLS_SELECTOR_PROXY.name, (p0) {
-                          CRouter(context).goTo(TaskNewTaskRoute(skillId: p0.toString()));
+                          CRouter(context).replace(TaskNewTaskRoute(skillId: p0.toString()));
                         });
                       },
                       icon: Icon(IconsaxPlusBroken.add),
@@ -425,60 +425,65 @@ class _InnerInboxTileState extends State<_InnerInboxTile> {
             Row(
               children: [
                 Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      spacing: 6.6,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ChipWidget(
-                          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                          child: Text("Tache", style: context.theme.textTheme.labelMedium),
+                        Row(
+                          spacing: 6.6,
+                          children: [
+                            if (widget.data['entrypoint_type'] == 'TASK')
+                              ChipWidget(
+                                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                child: Text("Tache", style: context.theme.textTheme.labelMedium),
+                              ),
+
+                            if (widget.data['is_expired'] == true)
+                              ChipWidget(
+                                color: CConsts.COLOR_GREY_LIGHT,
+                                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                child: Text("Tache expire", style: context.theme.textTheme.labelMedium).muted,
+                              ),
+                            if (widget.data['deal_state'] == 'IN_PROCESS')
+                              Text("Non deale", style: context.theme.textTheme.labelMedium),
+                            if (widget.data['deal_state'] == 'DEALED')
+                              ChipWidget(
+                                color: CConsts.LOGO_PRIMARY_COLOR,
+                                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                child: Text(
+                                  "Dealé",
+                                  style: context.theme.textTheme.labelMedium?.copyWith(color: CConsts.LIGHT_COLOR),
+                                ),
+                              ),
+                            //
+                          ],
                         ),
-                        ChipWidget(
-                          color: CConsts.COLOR_GREY_LIGHT,
-                          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                          child: Text("Tache expire", style: context.theme.textTheme.labelMedium).muted,
-                        ),
-                        Text("Non deale", style: context.theme.textTheme.labelMedium),
-                        ChipWidget(
-                          color: CConsts.LOGO_PRIMARY_COLOR,
-                          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                          child: Text(
-                            "Dealé",
-                            style: context.theme.textTheme.labelMedium?.copyWith(color: CConsts.LIGHT_COLOR),
-                          ),
-                        ),
-                        //
-                      ],
-                    ),
-                    Text(
-                      "Pseudo Utilisateur 1",
-                      style: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut la"
-                      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut la"
-                      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut la",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    3.gap,
-                    Row(
-                      children: [
                         Text(
-                          "Q: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut la"
-                          "Q: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut la"
-                          "Q: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut la",
-                          maxLines: 2,
-                          // overflow: TextOverflow.ellipsis,
-                          style: context.theme.textTheme.labelSmall,
-                        ).muted.elipsis.expanded(),
+                          "${widget.data['interloc_name'] ?? 'Anonyme'}",
+                          style: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        Text("${widget.data['response_message'] ?? '...'}", maxLines: 2, overflow: TextOverflow.ellipsis),
+                        3.gap,
+                        if (widget.data['task_title'] != null)
+                          Row(
+                            children: [
+                              Text(
+                                "Q: ${widget.data['task_title'] ?? ''}",
+                                maxLines: 2,
+                                // overflow: TextOverflow.ellipsis,
+                                style: context.theme.textTheme.labelSmall,
+                              ).muted.elipsis.expanded(),
+                            ],
+                          ),
+                        Row(children: []),
                       ],
-                    ),
-                    Row(children: []),
-                  ],
-                ).cursorClick(onClick: () {}, inkwell: true).expanded(),
+                    )
+                    .cursorClick(
+                      onClick: () {
+                        CRouter(context).goTo(ChatRoute(entrypointId: widget.data['entrypoint_id']));
+                      },
+                      inkwell: true,
+                    )
+                    .expanded(),
                 9.gap,
                 Column(
                   mainAxisSize: MainAxisSize.min,

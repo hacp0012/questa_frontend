@@ -19,7 +19,7 @@ class _DefaultContainerState extends State<DefaultContainer> {
       translucent: false,
       statusBarColor: widget.statusBarColor ?? context.theme.colorScheme.surface,
       navigationBarColor: widget.navBarColor ?? context.theme.colorScheme.surface,
-      child: widget.child,
+      child: Center(child: widget.child.constrained(maxWidth: 606)),
     );
   }
 }

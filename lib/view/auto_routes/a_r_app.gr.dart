@@ -286,18 +286,54 @@ class AuthRegisterRouteArgs {
 
 /// generated route for
 /// [_i5.ChatScreen]
-class ChatRoute extends _i29.PageRouteInfo<void> {
-  const ChatRoute({List<_i29.PageRouteInfo>? children})
-    : super(ChatRoute.name, initialChildren: children);
+class ChatRoute extends _i29.PageRouteInfo<ChatRouteArgs> {
+  ChatRoute({
+    _i31.Key? key,
+    String? entrypointId,
+    List<_i29.PageRouteInfo>? children,
+  }) : super(
+         ChatRoute.name,
+         args: ChatRouteArgs(key: key, entrypointId: entrypointId),
+         rawQueryParams: {'entrypointId': entrypointId},
+         initialChildren: children,
+       );
 
   static const String name = 'ChatRoute';
 
   static _i29.PageInfo page = _i29.PageInfo(
     name,
     builder: (data) {
-      return const _i5.ChatScreen();
+      final queryParams = data.queryParams;
+      final args = data.argsAs<ChatRouteArgs>(
+        orElse: () =>
+            ChatRouteArgs(entrypointId: queryParams.optString('entrypointId')),
+      );
+      return _i5.ChatScreen(key: args.key, entrypointId: args.entrypointId);
     },
   );
+}
+
+class ChatRouteArgs {
+  const ChatRouteArgs({this.key, this.entrypointId});
+
+  final _i31.Key? key;
+
+  final String? entrypointId;
+
+  @override
+  String toString() {
+    return 'ChatRouteArgs{key: $key, entrypointId: $entrypointId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ChatRouteArgs) return false;
+    return key == other.key && entrypointId == other.entrypointId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ entrypointId.hashCode;
 }
 
 /// generated route for
